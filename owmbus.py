@@ -67,7 +67,7 @@ async def read_data(Final_url, now):
 def setup_payload_server(cmdline=None):
     """Define payload for server and do setup."""
 
-    block = ModbusSequentialDataBlock(1, [0] * 82)
+    block = ModbusSequentialDataBlock(1, [0xffff] * 82)
     store = ModbusSlaveContext(hr=block, ir=block)
     context = ModbusServerContext(slaves=store, single=True)
     return server_async.setup_server(
